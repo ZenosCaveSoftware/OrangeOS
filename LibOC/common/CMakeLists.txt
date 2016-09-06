@@ -1,4 +1,4 @@
 set(LibOC_SRCS ${LIBOC_SRCS}
-#		${CMAKE_CURRENT_LIST_DIR}/assert.c
+		${CMAKE_CURRENT_LIST_DIR}/assert.c
 		${CMAKE_CURRENT_LIST_DIR}/string.c
 		${CMAKE_CURRENT_LIST_DIR}/ctype.c)

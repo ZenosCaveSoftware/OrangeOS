@@ -32,7 +32,7 @@
  */
 void __assert(const char *expr, const char *file, const char *func,  int line)
 {
-    fprintf(stderr,
-            "%s:%u: %s: Assertion `%s' failed.",
-            file, line, func, expr);
+//    fprintf(stderr,
+//            "%s:%u: %s: Assertion `%s' failed.",
+//            file, line, func, expr);
 }
