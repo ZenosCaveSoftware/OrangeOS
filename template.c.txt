@@ -1,0 +1,27 @@
+/* ===========================================================================
+ * <Project> <Project_Ver>
+ * <Module> <Mod_Ver>
+ *
+ * Please refer to LICENSE for copyright information
+ *
+ *      File    :
+ *      Purpose : 
+ * ===========================================================================
+ */
+
+/* ---------------------------------------------------------------------------
+ *      Name   :
+ *      Purpose: 
+ *      Args   :
+ *          <arg_id>: <arg_type>
+ *          - purpose. may be multiple lines
+ *
+ *          <arg_id>: <arg_type>
+ *          - purpose. may be multiple lines
+ *
+ *          <arg_id>: <arg_type>
+ *          - purpose. may be multiple lines
+ *
+ *      Returns: <type>
+ * ---------------------------------------------------------------------------
+ */
