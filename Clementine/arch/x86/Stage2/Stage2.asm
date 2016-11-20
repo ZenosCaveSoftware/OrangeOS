@@ -26,7 +26,7 @@ jmp	Stage2
 
 ImageName     db "KRNL    SYS"
 ImageSize     db 0
-msgLoading	db "Loading...",0x0A,0x00
+msgLoading	db "Loading...", 0x0D, 0x0A, 0x00
 msgFailure	db 0x0A, 0x00, "Error Loading: Press any key to reboot...", 0x0A, 0x00
 ;--------------------------;
 ; Boot Stage2			   ;
@@ -86,9 +86,14 @@ EnterStage3:
 
 bits 32
 
-BadImage db "*** FATAL: Invalid or corrupt kernel image. Halting system.", 0
-
+BadImage db  "[ERR]: Invalid or corrupt kernel image. Halting system.", 0x00
+LoadImage db "[INF]: Loading kernel image", 0x0A, 0x00
 Stage3:
+
+    call ClrScr32
+    mov ebx, LoadImage
+    call Puts32
+
 	mov	ax, KERN_DATA_DESC
  	mov	ds, ax
  	mov ss, ax
@@ -124,13 +129,13 @@ ImageSig db 'PE'
 EXECUTE:
 	add ebx, 24
 	mov eax, [ebx]
-	add ebx, 20-4
+	add ebx, 16
 	mov ebp, dword [ebx]
 	add ebx, 12
 	mov eax, dword [ebx]
 	add ebp, eax
 	cli
-	
+
 	call ebp
 	
 	cli

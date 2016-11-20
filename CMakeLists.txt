@@ -11,6 +11,6 @@ set(arch x86)
 # Modules
 foreach(module Orange Clementine LibOC)
     if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/${module}/CMakeLists.txt)
-        include(${CMAKE_CURRENT_LIST_DIR}/${module}/CMakeLists.txt)
+        add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/${module})
     endif()
 endforeach()

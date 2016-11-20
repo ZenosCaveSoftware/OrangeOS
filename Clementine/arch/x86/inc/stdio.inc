@@ -33,6 +33,7 @@ bits 32
 %define COLS	80
 %define LINES	25
 %define CHAR_ATTR 0x0f
+%define BLANK 0x20
 
 _CurX db 0
 _CurY db 0
@@ -78,25 +79,25 @@ Putch32:
 	popa
 	ret
 
-; .Scroll:
-; 	mov ecx, COLS * (LINES - 1)
-; 	mov eax, 0
-; .L0:
-; 	mov dx,	word [eax + VIDMEM + COLS]
-; 	mov word[eax + VIDMEM], dx
-; 	inc eax
-; 	dec ecx
-; 	jne .L0
-; 	mov eax, COLS
-; .L1:
-; 	mov dl, BLANK
-; 	mov dh, CHAR_ATTR
-; 	mov word [eax + VIDMEM], dx
-; 	inc eax
-; 	dec ecx
-; 	jne .L1
-; 	xor eax, eax
-; 	jmp .done
+.Scroll:
+	mov ecx, COLS * (LINES - 1)
+	mov eax, 0
+.L0:
+	mov dx,	word [eax + VIDMEM + COLS]
+	mov word[eax + VIDMEM], dx
+	inc eax
+	dec ecx
+	jne .L0
+	mov eax, COLS
+.L1:
+	mov dl, BLANK
+	mov dh, CHAR_ATTR
+	mov word [eax + VIDMEM], dx
+	inc eax
+	dec ecx
+	jne .L1
+	xor eax, eax
+	jmp .done
 
 Puts32:
 	pusha

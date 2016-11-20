@@ -1,21 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 [[ -d build ]] && rm -rf build
-mkdir -p build/floppy1 dist
+mkdir -p build/floppy dist
 
 pushd build
-cmake ..
-CC=gcc make clean all
-cp ../emptyfat12.img orange.iso
+cmake -DCMAKE_TOOLCHAIN_FILE=../mingw32.cmake ..
+make clean all
+cp ../emptyfat12.img orange.img
 
-sudo mount -o loop,fat=12 orange.img floppy1
-cp KRNLDR floppy/KRNLDR.SYS || (echo "Failed to copy Loader" && exit 1)
-cp KRNL floppy/KRNL.SYS || (echo "Failed to copy Kernel" && exit 1)
-sudo umount floppy1
-dd bs=512 count=1 if=Stage1 of=orange.img conv=notrunc
+sudo mount -t msdos -o loop,fat=12 orange.img floppy
+sudo cp Clementine/KRNLDR.exe floppy/KRNLDR.SYS || (echo "Failed to copy Loader" && exit 1)
+sudo cp Orange/KRNL.exe floppy/KRNL.SYS || (echo "Failed to copy Kernel" && exit 1)
+sudo umount floppy
+dd bs=512 count=1 if=Clementine/Stage1.exe of=orange.img conv=notrunc
 popd
 
 mv build/orange.img  dist/orange-$(date +"%Y%m%d-%H%M%S").img
-rm -rf build
 echo "DONE!"

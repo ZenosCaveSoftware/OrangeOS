@@ -13,6 +13,8 @@ bits 16
 
 jmp main
 
+%include "Floppy16.inc"
+
 Puts16:
 		pusha
 .Loop1:
@@ -26,7 +28,6 @@ Puts16Done:
 		popa
 		ret
 
-%include "Floppy16.inc"
 
 Print:
 		lodsb

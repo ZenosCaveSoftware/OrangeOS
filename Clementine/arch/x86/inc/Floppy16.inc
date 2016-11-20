@@ -13,14 +13,14 @@
 
 [BITS 16]
 
-OEMLabel			db	"JUMPBOOT"
+OEMLabel:			db  "MRDOS 1.0"
 BytesPerSector:		dw	512
 SectorsPerCluster:	db	1
 ReservedForBoot:	dw	1
 NumberOfFats:		db	2
 RootDirEntries:		dw	224
 LogicalSectors:		dw	2880
-MediumByte:			db	0xF8
+MediumByte:			db	0xf0
 SectorsPerFat:		dw	9
 SectorsPerTrack:	dw	18
 HeadsPerCylinder:	dw	2
@@ -30,7 +30,7 @@ DriveNo:			db	0
 Unused:				db	0
 Signature:			db	0x29
 VolumeID:			dd	0xa0a1a2a3
-VolumeLabel:		db	"JUMP BOOT  "
+VolumeLabel:		db	"CLEMENTINE "
 FileSystem:			db	"FAT12   "
 
 datasector	dw 0x0000
@@ -40,7 +40,7 @@ absoluteSector	db 0x00
 absoluteHead	db 0x00
 absoluteTrack	db 0x00
 
-msgProgress	db "-", 0x00
+msgProgress	db ".", 0x00
 
 ReadSectors:
 	.MAIN:

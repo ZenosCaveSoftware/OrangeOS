@@ -14,3 +14,4 @@ add_executable(KRNLDR ${Clementine_Stage2_SRCS})
 
 set_target_properties(Stage1 PROPERTIES LINKER_LANGUAGE ASM_NASM)
 set_target_properties(KRNLDR PROPERTIES LINKER_LANGUAGE ASM_NASM)
+set(CMAKE_ASM_NASM_OBJECT_FORMAT)

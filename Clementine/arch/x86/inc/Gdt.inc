@@ -55,7 +55,3 @@ toc:
 %define KERN_DATA_DESC 0x10
 
 %endif
-
-
-
-
