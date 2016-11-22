@@ -51,7 +51,6 @@ toc:
 ; give the descriptor offsets names
 
 %define NULL_DESC 0
-%define KERN_CODE_DESC 0x8
-%define KERN_DATA_DESC 0x10
-
+%define KERN_CODE_DESC 08h
+%define KERN_DATA_DESC 010h
 %endif

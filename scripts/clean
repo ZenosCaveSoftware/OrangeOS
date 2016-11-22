@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+. ./config
+
+$MAKE -s -C .. clean
+
+rm -rf ../log
+rm -rf ../build
+rm -rf ../dist

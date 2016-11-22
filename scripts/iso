@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+. ./build
+
+pushd ../build
+cp ../emptyfat12.img orange.img
+
+sudo mount -t msdos -o loop,fat=12 orange.img floppy
+sudo cp KRNLDR.SYS floppy/KRNLDR.SYS || (echo "Failed to copy Loader" && exit 1)
+sudo cp KRNL.SYS floppy/KRNL.SYS || (echo "Failed to copy Kernel" && exit 1)
+sudo umount floppy
+dd bs=512 count=1 if=Boot.bin of=orange.img conv=notrunc
+popd
+
+mv ../build/orange.img ../dist/orange.img 
+cp ../dist/orange.img ../dist/orange-$(date +"%Y%m%d-%H%M%S").img
+echo "DONE!"

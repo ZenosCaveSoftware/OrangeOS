@@ -1,0 +1,8 @@
+#!/bin/bash
+if [[ $(git tag | tail -n1) != "" ]]; then
+	patchlevel=$(git tag | tail -n1 | cut -d- -f1 | cut -d. -f3)
+	patch=$(($patchlevel + 1))
+	echo "$(git tag | tail -n1 | cut -d- -f1 | cut -d. -f-2).$patch-$(ls ../dist/orange-* | tail -n1 | cut -d- -f2- | cut -d. -f1)"
+else
+	echo "v0.0.0-$(ls ../dist/orange-* | tail -n1 | cut -d- -f2- | cut -d. -f1)"
+fi

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+[[ -d build ]] && rm -rf ../build
+mkdir -p ../build/floppy ../dist
+mkdir -p $( find ../Orange -type d -print | sed 's/^\.\./..\/build/' | tr '\n' ' ')
+mkdir -p $( find ../LibOC -type d -print | sed 's/^\.\./..\/build/' | tr '\n' ' ')
+
+[[ -d build ]] && rm -rf ../log
+mkdir -p ../log/build

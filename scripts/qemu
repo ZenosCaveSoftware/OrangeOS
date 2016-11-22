@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+if [[ $# -ge 1 ]]; then
+	while [[ "x$1" != "x-n" && $# -ne 0 ]]; do
+		shift;
+	done
+fi
+if [[ $# -eq 0 ]]; then
+	. ./iso
+fi
+
+system=$(./target-triplet-to-arch $(./default-host))
+[[ "x$system" == "xi686" ]] && system=i386
+let mem=$((($(awk '/^MemTotal:/{print $2}' /proc/meminfo) / 4096 + 1023) / 1024 * 1024))
+qemu-system-$system -cdrom ../dist/orange.img -m $mem

@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <string.h>
 
 enum vga_color {
     VGA_COLOR_BLACK = 0,
@@ -25,13 +26,6 @@ static inline unsigned char vga_entry_color(enum vga_color fg, enum vga_color bg
 
 static inline unsigned short vga_entry(unsigned char uc, unsigned char color) {
     return (unsigned short) uc | (unsigned short) color << 8;
-}
-
-size_t strlen(const char* str) {
-    size_t len = 0;
-    while (str[len])
-        len++;
-    return len;
 }
 
 static const size_t VGA_WIDTH = 80;

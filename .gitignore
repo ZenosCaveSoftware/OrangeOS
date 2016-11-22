@@ -40,3 +40,6 @@ CMakeFiles/
 .idea/
 build/
 .settings/
+log/
+dist/*
+!dist/orange.img

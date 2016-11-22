@@ -1,0 +1,7 @@
+set -e
+. ./config
+. ./folders
+
+
+
+DESTDIR="$PWD/../dist" $MAKE -j $(($(nproc) + 1)) -s -C ../ all

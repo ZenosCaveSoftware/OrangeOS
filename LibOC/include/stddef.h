@@ -34,4 +34,4 @@ typedef unsigned int        uint;
 typedef unsigned long       ulong;
 typedef unsigned long       size_t;
 
-#endif /* _OOS_FILE_H */
+#endif /* _OOS_LIBC_STDDEF_H */

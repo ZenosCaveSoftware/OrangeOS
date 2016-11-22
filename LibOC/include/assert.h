@@ -20,7 +20,7 @@
 #define assert(e)
 #else
 #define assert(e) (void)((e) || \
-    (__assert(#e, __FILE__, __LINE__, __PRETTy_FUNCTION__),0))
+    (__assert(#e, __FILE__, __LINE__, __PRETTY_FUNCTION__),0))
 #endif
 
 #ifdef __cplusplus

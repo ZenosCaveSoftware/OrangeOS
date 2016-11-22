@@ -41,6 +41,9 @@ Stage2:
 	xor ax, ax
 	mov ds, ax
 	mov es, ax
+	mov fs, ax
+	mov gs, ax
+
 	mov ax, 0x0
 	mov ss, ax
 	mov sp, 0xFFFF
@@ -101,7 +104,7 @@ Stage3:
  	mov	esp, 90000h
 
 CopyImage:
- 	mov	eax, dword [ImageSize]
+ 	mov eax, dword [ImageSize]
   	movzx ebx, word [BytesPerSector]
   	mul	ebx
   	mov	ebx, 4
@@ -111,32 +114,5 @@ CopyImage:
    	mov	edi, IMAGE_PMODE_BASE
    	mov	ecx, eax
    	rep	movsd
-   	
-TestImage:
-	mov ebx, [IMAGE_PMODE_BASE+60]
-	add ebx, IMAGE_PMODE_BASE
-	mov esi, ebx
-	mov edi, ImageSig
-   	cmpsw
-   	je EXECUTE
-   	mov ebx, BadImage
-   	call Puts32
-   	cli
-   	hlt
 
-ImageSig db 'PE'
-
-EXECUTE:
-	add ebx, 24
-	mov eax, [ebx]
-	add ebx, 16
-	mov ebp, dword [ebx]
-	add ebx, 12
-	mov eax, dword [ebx]
-	add ebp, eax
-	cli
-
-	call ebp
-	
-	cli
-	hlt
+   	call KERN_CODE_DESC:IMAGE_PMODE_BASE

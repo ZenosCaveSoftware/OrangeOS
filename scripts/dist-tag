@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ $(git tag | tail -n1) != "" ]]; then
+	echo "$(git tag | tail -n1 | cut -d- -f1)-$(date +%Y%m%d-%H%M%S)"
+else
+	echo "v0.0.0-$(date +%Y%m%d-%H%M%S)"
+fi

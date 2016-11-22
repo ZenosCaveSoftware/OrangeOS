@@ -1,0 +1,10 @@
+memory: guest=32, host=32
+romimage: file=/usr/share/bochs/BIOS-bochs-latest, address=0x00000
+vgaromimage: file=/usr/share/bochs/VGABIOS-elpin-2.40
+floppya: 1_44="dist/orange.img", status=inserted
+boot: floppy
+log: log/bochsout.txt
+#gdbstub: enabled=1, port=1234, text_base=0, data_base=0, bss_base=0
+mouse: enabled=0
+clock: sync=realtime
+cpu: ips=1000000
